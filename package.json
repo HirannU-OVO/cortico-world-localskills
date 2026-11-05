@@ -1,6 +1,6 @@
 {
   "name": "cortico-world-localskills",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "type": "module",
   "description": "Cortico World 扩展：按 Claude Skill 格式扫描本地技能目录（SKILL.md），支持三态启停、分段读取、全文搜索、安全市场安装与设置面板管理。",
   "license": "MIT",
@@ -29,7 +29,9 @@
   "files": [
     "src",
     "dist",
-    "describe.json"
+    "describe.json",
+    "README.md",
+    "CHANGELOG.md"
   ],
   "author": "HirannU"
 }
