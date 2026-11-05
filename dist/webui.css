@@ -1,0 +1,75 @@
+/* 技能库 WebUI 样式：列表统一为单行，状态胶囊与信息同行，避免多行留白 */
+.skills-list,
+.market-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.sk-row,
+.mk-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line, rgba(128, 128, 128, 0.18));
+  background: var(--sheet-2, rgba(128, 128, 128, 0.06));
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.sk-row:hover,
+.mk-row:hover {
+  background: var(--sheet-3, rgba(128, 128, 128, 0.12));
+  border-color: var(--line-2, rgba(128, 128, 128, 0.3));
+}
+
+/* 状态胶囊可点击切换三态 */
+.sk-state {
+  flex: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sk-state:hover {
+  filter: brightness(1.08);
+}
+
+.sk-title,
+.mk-title {
+  flex: none;
+  font-weight: 600;
+  white-space: nowrap;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sk-meta,
+.mk-meta {
+  flex: none;
+  font-size: 12px;
+  opacity: 0.55;
+  white-space: nowrap;
+}
+
+/* 描述占满剩余宽度，单行省略，悬停看全文 */
+.sk-desc,
+.mk-desc {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 13px;
+  opacity: 0.75;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sk-tail,
+.mk-tail {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

@@ -1,0 +1,35 @@
+{
+  "name": "cortico-world-localskills",
+  "version": "0.3.3",
+  "type": "module",
+  "description": "Cortico World 扩展：按 Claude Skill 格式扫描本地技能目录（SKILL.md），支持三态启停、分段读取、全文搜索、安全市场安装与设置面板管理。",
+  "license": "MIT",
+  "keywords": [
+    "cortico-world",
+    "skills",
+    "claude-skill",
+    "prompt"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "main": "./src/index.ts",
+  "scripts": {
+    "build:webui": "..\\..\\..\\..\\resources\\app\\node_modules\\@esbuild\\win32-x64\\esbuild.exe src/webui/client.ts --bundle --format=esm --platform=browser --target=es2022 --outfile=dist/webui.js --loader:.css=css && node -e \"require('fs').copyFileSync('src/webui/style.css','dist/webui.css')\"",
+    "build": "npm run build:webui"
+  },
+  "cortico": {
+    "kind": "world",
+    "api": 6,
+    "displayName": "技能库",
+    "describe": "describe.json",
+    "webUiClient": "dist/webui.js",
+    "webUiStyle": "dist/webui.css"
+  },
+  "files": [
+    "src",
+    "dist",
+    "describe.json"
+  ],
+  "author": "HirannU"
+}

@@ -1,0 +1,124 @@
+{
+  "tools": [
+    {
+      "name": "skill_list",
+      "description": "列出本机技能库里已启用的专属技能清单。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "includeManual": { "type": "boolean", "description": "是否包含仅手动调用的技能" }
+        }
+      },
+      "tags": ["read"],
+      "summary": { "zh": "列出本机技能库。", "en": "List local skills." }
+    },
+    {
+      "name": "skill_load",
+      "description": "读取某个技能的完整说明，支持分段续读。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "技能名或 ID" },
+          "offset": { "type": "number", "description": "起始字符偏移量" },
+          "limit": { "type": "number", "description": "单次读取上限" }
+        },
+        "required": ["name"]
+      },
+      "tags": ["read"],
+      "summary": { "zh": "读取技能完整正文。", "en": "Load a skill body." }
+    },
+    {
+      "name": "skill_read",
+      "description": "读取技能目录里的参考或脚本资源文件。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "技能名或 ID" },
+          "path": { "type": "string", "description": "相对路径" }
+        },
+        "required": ["name", "path"]
+      },
+      "tags": ["read"],
+      "summary": { "zh": "读取技能附带资源。", "en": "Read a resource inside a skill." }
+    },
+    {
+      "name": "skill_search",
+      "description": "全文搜索本地技能。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string", "description": "搜索关键词" },
+          "limit": { "type": "number", "description": "最大结果数" }
+        },
+        "required": ["query"]
+      },
+      "tags": ["read"],
+      "summary": { "zh": "全文搜索技能。", "en": "Search local skills." }
+    },
+    {
+      "name": "skill_create",
+      "description": "在本机技能库里新建一个技能（写 SKILL.md 与元数据）。当现有技能都不适用、而这套做法以后还会重复用时使用；一次性的临时操作不要建技能。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "技能名，同时作为目录名：小写字母/数字/点/下划线/连字符，≤64" },
+          "description": { "type": "string", "description": "一句话说明：这个技能做什么、什么时候该用" },
+          "body": { "type": "string", "description": "SKILL.md 正文（Markdown），按步骤写清做法与坑" },
+          "whenToUse": { "type": "string", "description": "可选：更具体的触发场景" },
+          "allowedTools": { "type": "array", "items": { "type": "string" }, "description": "可选：需要的工具，如 Bash、Read" }
+        },
+        "required": ["name", "description", "body"]
+      },
+      "tags": ["write"],
+      "summary": { "zh": "新建一个技能。", "en": "Create a new skill." }
+    },
+    {
+      "name": "skill_install",
+      "description": "从技能市场中安装指定的技能。仅在配置开启 allowModelWrite 时可用。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "description": "技能市场中的技能 ID" }
+        },
+        "required": ["id"]
+      },
+      "tags": ["write"],
+      "summary": { "zh": "从市场安装技能。", "en": "Install a skill from market." }
+    },
+    {
+      "name": "skill_uninstall",
+      "description": "卸载指定技能并移入回收站。仅在配置开启 allowModelWrite 时可用。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "description": "待卸载的技能 ID" }
+        },
+        "required": ["id"]
+      },
+      "tags": ["write"],
+      "summary": { "zh": "卸载技能到回收站。", "en": "Uninstall a skill to trash." }
+    },
+    {
+      "name": "skill_update",
+      "description": "更新市场安装的技能到最新版本。仅在配置开启 allowModelWrite 时可用。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "description": "技能 ID" }
+        },
+        "required": ["id"]
+      },
+      "tags": ["write"],
+      "summary": { "zh": "更新市场技能。", "en": "Update a market skill." }
+    }
+  ],
+  "events": [],
+  "prompts": [
+    {
+      "key": "worlds.skills.envPrompt",
+      "title": "技能库 · 环境提示词",
+      "role": "envPrompt",
+      "content": "本机技能库有 {{skillCount}} 个技能，目录：{{skillDirs}}。\r\n{{skillList}}\r\n\r\n要按技能做事时：先 skill_load(name) 读完整说明，再照步骤用 sh / fs_read / fs_write / web_fetch 执行；技能自带的参考文件用 skill_read(name, path) 读；正文太长时用 skill_load 的 offset 续读。别凭名字猜步骤，也别一次读一堆用不上的技能。找不到时先用 skill_search 搜关键词。\r\n"
+    }
+  ]
+}
