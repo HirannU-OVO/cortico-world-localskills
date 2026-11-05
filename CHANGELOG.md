@@ -2,7 +2,7 @@
 
 本文件记录「本地技能库 (cortico-world-localskills)」扩展的版本变化。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
-## [0.3.3] - 2026-11-05
+## [0.3.4] - 2026-11-05
 
 > 让桌宠拥有一个按 Claude Skill 规范组织的本地技能库：扫描、分段阅读、检索、三态控制与市场安装。
 
