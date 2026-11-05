@@ -33,5 +33,13 @@
     "README.md",
     "CHANGELOG.md"
   ],
-  "author": "HirannU"
+  "author": "HirannU",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HirannU-OVO/cortico-world-localskills.git"
+  },
+  "homepage": "https://github.com/HirannU-OVO/cortico-world-localskills#readme",
+  "bugs": {
+    "url": "https://github.com/HirannU-OVO/cortico-world-localskills/issues"
+  }
 }
