@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+*.log
+logs/
+cache/
+data/
+config.json
+.vscode/
+.idea/

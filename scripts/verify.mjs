@@ -4,7 +4,8 @@
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-const DEFAULT_DATA_DIR = 'D:/Tools/Coopanion/data/home/companion/data';
+// 数据目录：优先命令行参数，其次环境变量 COOPANION_DATA_DIR，最后回退到当前目录下的 data/
+const DEFAULT_DATA_DIR = process.env.COOPANION_DATA_DIR || resolve(process.cwd(), 'data');
 const dataDir = process.argv[2] ? resolve(process.argv[2]) : DEFAULT_DATA_DIR;
 
 const mod = await import(new URL('../src/index.ts', import.meta.url).href);
