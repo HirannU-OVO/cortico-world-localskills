@@ -24,22 +24,32 @@
     "displayName": "技能库",
     "describe": "describe.json",
     "webUiClient": "dist/webui.js",
-    "webUiStyle": "dist/webui.css"
+    "webUiStyle": "dist/webui.css",
+    "tags": [
+      "skills",
+      "prompt"
+    ]
   },
   "files": [
     "src",
     "dist",
     "describe.json",
     "README.md",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "LICENSE"
   ],
   "author": "HirannU",
   "repository": {
     "type": "git",
-    "url": "https://github.com/HirannU-OVO/cortico-world-localskills.git"
+    "url": "git+github.com/HirannU-OVO/cortico-world-localskills.git"
   },
   "homepage": "https://github.com/HirannU-OVO/cortico-world-localskills#readme",
   "bugs": {
     "url": "https://github.com/HirannU-OVO/cortico-world-localskills/issues"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   }
 }
